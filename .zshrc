@@ -1,16 +1,30 @@
-# Created by newuser for 5.1.1
+# Created by kotoji for 5.1.1
 
-# Completion
+## Completion
+#
 autoload -U compinit
 compinit
 setopt nolistbeep
-setopt correct
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# Color settings
+# enable history-search
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+# incremental search with wild card
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
+
+## Style and Colour
+# colour on 
 autoload -Uz colors
 colors
 
-# Prompt setting
+# prompt setting
 setopt prompt_subst
 case ${UID} in
 0)
@@ -28,11 +42,10 @@ esac
 SPROMPT="%{[38;5;9m%}%r est correct? [n, o, a, m]:%{[m%} "
 
 
-
 # ls colors
 export LSCOLORS=hxfxxxxxbxxxxxbxbxhxhx
 export LS_COLORS='di=01;94:ln=00;35:ex=00;91'
-zstyle ':completion:*' list-colors 'di=94' 'ln=35' 'ex=91'
+zstyle ':completion:*' list-colors "$LS_COLORS"
 
 case ${OSTYPE} in
 darwin*)
@@ -47,13 +60,15 @@ linux*)
 esac
 
 
-# Alias
+## Alias
+#
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 
 
-# Set vcs_info
+## Git
+# vcs_info
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -66,9 +81,21 @@ precmd () {
   RPROMPT="${vcs_info_msg_0_}"
 }
 
-# History
+## History
+#
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 setopt hist_ignore_dups
 setopt share_history
+
+
+## Other options
+#
+setopt auto_cd
+setopt auto_name_dirs
+unsetopt auto_remove_slash
+setopt auto_list
+setopt auto_param_keys
+unsetopt ignore_eof
+
