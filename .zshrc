@@ -35,8 +35,8 @@ case ${UID} in
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
     PROMPT="%{[38;5;39m%}REMOTE "
   PROMPT="${PROMPT}%{[38;5;208m%}[%n@%m %~]
-%{[38;5;208m%}(▰╹◡╹)%# %{[m%}"
-  PROMPT2="%{[38;5;208m%}(▰╹◡╹)> %{[m%}"
+%{[38;5;208m%}(๑˃ᴗ˂)و%# %{[m%}"
+  PROMPT2="%{[38;5;208m%}(๑˃ᴗ˂)و> %{[m%}"
   ;;
 esac
 SPROMPT="%{[38;5;9m%}%r est correct? [n, o, a, m]:%{[m%} "
@@ -72,8 +72,8 @@ alias lla='ls -la'
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!" # non-commit file exist
-zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+" # non-add file exist
+zstyle ':vcs_info:git:*' stagedstr "%{[38;5;134m%}!" # non-commit file exist
+zstyle ':vcs_info:git:*' unstagedstr "%{[38;5;134m%}+" # non-add file exist
 zstyle ':vcs_info:*' formats "%F{cyan}%c%u(%b)%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () {
