@@ -43,15 +43,15 @@ SPROMPT="%{[38;5;9m%}%r est correct? [n, o, a, m]:%{[m%} "
 
 
 # ls colors
-export LSCOLORS=hxfxxxxxbxxxxxbxbxhxhx
-export LS_COLORS='di=01;94:ln=00;35:ex=00;91'
+export LSCOLORS=gxfxcxdxbxegedabagacad
+export LS_COLORS='di=01;94:ln=00;35:ex=00;91:so=32:pi=33:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 zstyle ':completion:*' list-colors "$LS_COLORS"
 
 case ${OSTYPE} in
 darwin*)
   # Mac
   export CLICOLOR=1
-  alias ls='ls -F'
+  alias ls='ls -GF'
   ;;
 linux*)
   # Linux
@@ -72,9 +72,9 @@ alias lla='ls -la'
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{green}!" # non-commit file exist
+zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!" # non-commit file exist
 zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+" # non-add file exist
-zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
+zstyle ':vcs_info:*' formats "%F{cyan}%c%u(%b)%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () {
   vcs_info
