@@ -35,8 +35,8 @@ case ${UID} in
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
     PROMPT="%{[38;5;39m%}REMOTE "
   PROMPT="${PROMPT}%{[38;5;208m%}[%n@%m %~]
-%{[38;5;208m%}%# %{[m%}"
-  PROMPT2="%{[38;5;208m%}> %{[m%}"
+%{[38;5;208m%}(▰╹◡╹)%# %{[m%}"
+  PROMPT2="%{[38;5;208m%}(▰╹◡╹)> %{[m%}"
   ;;
 esac
 SPROMPT="%{[38;5;9m%}%r est correct? [n, o, a, m]:%{[m%} "
@@ -44,7 +44,7 @@ SPROMPT="%{[38;5;9m%}%r est correct? [n, o, a, m]:%{[m%} "
 
 # ls colors
 export LSCOLORS=gxfxcxdxbxegedabagacad
-export LS_COLORS='di=01;94:ln=00;35:ex=00;91:so=32:pi=33:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+export LS_COLORS='di=1;94:ln=00;35:ex=00;91:so=32:pi=33:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 zstyle ':completion:*' list-colors "$LS_COLORS"
 
 case ${OSTYPE} in
@@ -86,6 +86,7 @@ precmd () {
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+LISTMAX=300
 setopt hist_ignore_dups
 setopt share_history
 
@@ -98,4 +99,5 @@ unsetopt auto_remove_slash
 setopt auto_list
 setopt auto_param_keys
 unsetopt ignore_eof
+setopt no_beep
 
